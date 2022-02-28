@@ -5,6 +5,8 @@ import (
 	"log"
 	"sync"
 	"time"
+
+	"github.com/DainerAcosta/cache_opt/cache_opt"
 )
 
 func Fibonacci(n int) int {
@@ -21,7 +23,7 @@ func GetFibonacci(n int) (int, error) {
 
 func main() {
 	timeInit := time.Now()
-	cache := NewCache(GetFibonacci)
+	cache := cache_opt.NewCache(GetFibonacci)
 	fibo := []int{44, 42, 40, 41, 42, 38, 40, 40, 41, 43, 43, 43, 44}
 	var wg sync.WaitGroup
 	for _, n := range fibo {
